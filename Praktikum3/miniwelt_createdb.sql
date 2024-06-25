@@ -1,13 +1,12 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     15.05.2024 17:58:40                          */
+/* Created on:     31.05.2024 14:45:32                          */
 /*==============================================================*/
 
 
 DROP SCHEMA IF EXISTS STREAMING CASCADE;
 CREATE SCHEMA IF NOT EXISTS STREAMING;
 SET SEARCH_PATH TO STREAMING;
-
 
 /*==============================================================*/
 /* Table: Ausstrahlung                                          */
@@ -184,16 +183,16 @@ email
 );
 
 /*==============================================================*/
-/* Index: SCHLIE_T_VERTRAG_FK                                   */
+/* Index: MACHT_VERTRAG_FK                                      */
 /*==============================================================*/
-create  index SCHLIE_T_VERTRAG_FK on Vertrag (
+create  index MACHT_VERTRAG_FK on Vertrag (
 name
 );
 
 /*==============================================================*/
-/* Index: SCHLIE_T_VERTRAG_FK2                                  */
+/* Index: MACHT_VERTRAG_FK2                                     */
 /*==============================================================*/
-create  index SCHLIE_T_VERTRAG_FK2 on Vertrag (
+create  index MACHT_VERTRAG_FK2 on Vertrag (
 email
 );
 
@@ -286,12 +285,12 @@ alter table Serie
       on delete restrict on update restrict;
 
 alter table Vertrag
-   add constraint FK_VERTRAG_SCHLIE�T__KUNDE foreign key (email)
+   add constraint FK_VERTRAG_MACHT_VER_KUNDE foreign key (email)
       references Kunde (email)
       on delete restrict on update restrict;
 
 alter table Vertrag
-   add constraint FK_VERTRAG_SCHLIE�T__STREAMIN foreign key (name)
+   add constraint FK_VERTRAG_MACHT_VER_STREAMIN foreign key (name)
       references Streamingdienst (name)
       on delete restrict on update restrict;
 
